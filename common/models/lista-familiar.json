@@ -12,7 +12,28 @@
     }
   },
   "validations": [],
-  "relations": {},
+  "relations": {
+    "ListaFamiliarTieneMuchosUsuarios": {
+      "type": "hasMany",
+      "model": "Usuario",
+      "foreignKey": ""
+    },
+    "ListaFamiliarPerteneceAUsuario": {
+      "type": "belongsTo",
+      "model": "Usuario",
+      "foreignKey": "Owner"
+    },
+    "Solicitud": {
+      "type": "hasAndBelongsToMany",
+      "model": "Usuario",
+      "foreignKey": ""
+    },
+    "ListaFamiliarTieneMuchosProductos": {
+      "type": "hasMany",
+      "model": "Producto",
+      "foreignKey": ""
+    }
+  },
   "acls": [],
   "methods": {}
 }
