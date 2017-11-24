@@ -34,19 +34,35 @@
       "foreignKey": ""
     }
   },
-  "acls": [
-    {
-      "accessType": "*",
-      "principalType": "ROLE",
-      "principalId": "$everyone",
-      "permission": "DENY"
-    },
-    {
-      "accessType": "WRITE",
-      "principalType": "ROLE",
-      "principalId": "$authenticated",
-      "permission": "ALLOW"
+  "acls": [],
+  "methods": {
+    "prototype.crearSolicitudes": {
+      "accepts": [
+        {
+          "arg": "lista",
+          "type": "object",
+          "required": true,
+          "description": "",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "salida",
+          "type": "object",
+          "root": true,
+          "description": ""
+        }
+      ],
+      "description": "Debemos crear un punto de entrada POST /ListasFamiliares/{id}/solicitar,",
+      "http": [
+        {
+          "path": "/solicitar",
+          "verb": "post"
+        }
+      ]
     }
-  ],
-  "methods": {}
+  }
 }
