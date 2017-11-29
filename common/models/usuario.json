@@ -45,7 +45,43 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "create"
+    },
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "usuario"
     }
   ],
-  "methods": {}
+  "methods": {
+    "prototype.usuario": {
+      "accepts": [
+        {
+          "arg": "aceptarSoli",
+          "type": "object",
+          "required": true,
+          "description": "Acepta las solicitudes",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "SalidaAceptarSolicitud",
+          "type": "object",
+          "root": true,
+          "description": "Acepta las solicitudes"
+        }
+      ],
+      "description": "Creacion",
+      "http": [
+        {
+          "path": "/aceptarSolicitud",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }
