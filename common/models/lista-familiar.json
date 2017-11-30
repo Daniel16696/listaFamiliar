@@ -34,7 +34,15 @@
       "foreignKey": ""
     }
   },
-  "acls": [],
+  "acls": [
+    {
+      "accessType": "EXECUTE",
+      "principalType": "ROLE",
+      "principalId": "$authenticated",
+      "permission": "ALLOW",
+      "property": "SalidaAceptarSolicitud"
+    }
+  ],
   "methods": {
     "prototype.crearSolicitudes": {
       "accepts": [
