@@ -13,7 +13,7 @@ module.exports = function (Usuario) {
         Usuario.findById(userId, function (err, userAuth) {
            var  usuarioValores = userAuth.listaFamiliarId;
 
-            console.log(usuarioValores);
+           // console.log(usuarioValores);
             
 
             usuarioSolicitando.Solicituds(function (err, listas) {
@@ -29,7 +29,12 @@ module.exports = function (Usuario) {
                          id: id,
                          usuarioSolicitando
                      }
+                    // console.log(listas[0]);
                      callback(null, SalidaAceptarSolicitud);
+
+                     listas[0].Solicitud.remove(usuarioSolicitando, function(err){
+
+                     });
                  });
                 }else{
                     SalidaAceptarSolicitud = {
