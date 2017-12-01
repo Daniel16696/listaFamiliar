@@ -32,5 +32,34 @@
       "property": "SalidaAceptarSolicitud"
     }
   ],
-  "methods": {}
+  "methods": {
+    "todosProductosComprados": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "required": true,
+          "description": "Recibe un id",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "producto",
+          "type": "array",
+          "root": true,
+          "description": "Devuelve los productos"
+        }
+      ],
+      "description": "Va a mostrar todos los valores a false como si los hubiera comprado todos los productos",
+      "http": [
+        {
+          "path": "/limpiarLista",
+          "verb": "put"
+        }
+      ]
+    }
+  }
 }
