@@ -73,14 +73,18 @@ module.exports = function (Usuario) {
             usuarioSolicitando.Solicituds(function (err, listas) {
                 if (err) callback(err);
                 console.log(listas);
-                var id = listas[0].id;
+                var id = listas[0];
                 console.log(id);
 
                 console.log(usuarioSolicitando);
-                
+
                 listas[0].Solicitud.remove(usuarioSolicitando, function (err) {
-                    callback(null, listaEliminada);
-                })
+                    Usuario.find({ where: { listaFamiliarId:usuarioValores } }, function (err, usuariosBuscados) {
+                        callback(err, usuariosBuscados);
+                    });
+                });
+
+
             })
 
         });
