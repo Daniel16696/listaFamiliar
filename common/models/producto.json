@@ -60,6 +60,34 @@
           "verb": "put"
         }
       ]
+    },
+    "prototype.comprarUnDeterminadoProducto": {
+      "accepts": [
+        {
+          "arg": "context",
+          "type": "object",
+          "required": true,
+          "description": "Se necesita pasarle un id",
+          "http": {
+            "source": "context"
+          }
+        }
+      ],
+      "returns": [
+        {
+          "arg": "producto",
+          "type": "array",
+          "root": true,
+          "description": "Va a recibir un determinado producto y muestra como cambia segun se lo pidas de estado a true si quieres comprarlo y false si quieres quitarlo "
+        }
+      ],
+      "description": "poner el atributo comprar a false y viceversa",
+      "http": [
+        {
+          "path": "/comprado",
+          "verb": "put"
+        }
+      ]
     }
   }
 }
