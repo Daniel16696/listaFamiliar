@@ -10,13 +10,13 @@ module.exports = function (Listafamiliar) {
     // guardando, posteriormente, los nuevos datos del usuario.
     Listafamiliar.afterRemote('create', function (context, listafamiliar, next) {
         var app = listafamiliar.app;
-        var a = context.req.accessToken.userId;
+        var userId = context.req.accessToken.userId;
 
         var Usuario = Listafamiliar.app.models.Usuario;
         console.log(Usuario);
 
 
-        Usuario.findById(a, function (err, instance) {
+        Usuario.findById(userId, function (err, instance) {
 
             instance.listaFamiliarId = listafamiliar.id;
             instance.save(function (err) {
@@ -27,24 +27,38 @@ module.exports = function (Listafamiliar) {
     });
 
     //Debemos crear un punto de entrada POST /ListasFamiliares/{id}/solicitar, que inserte en la tabla
-    //de solucitudes una fila que contenga el id de la lista familiar a la que se quiere pertenecer y
+    //de solucitudes una fila que contenga el id de la lista familiar userId la que se quiere pertenecer y
     //el id del usuario que está autenticado.
     Listafamiliar.prototype.crearSolicitudes = function (lista, callback) {
         var salida;
-        var a = lista.req.accessToken.userId;
+        var userId = lista.req.accessToken.userId;
         var idLista = this.id;
 
-        this.Solicitud.add(a,
+        this.Solicitud.add(userId,
             function (err) {
                 if (err) callback(err);
                 salida = {
                     listaFamiliarId: idLista,
-                    usuarioId: a
+                    usuarioId: userId
                 };
                 callback(null, salida);
             });
     };
 
-      
+    Listafamiliar.afterRemote("prototype.crearSolicitudes", function (context, listafamiliar, next) {
+        var app = listafamiliar.app;
+        var userId = context.req.accessToken.userId;
+        var Usuario = Listafamiliar.app.models.Usuario;
+
+        var idDeLaSolicitud = listafamiliar.listaFamiliarId;
+        console.log(idDeLaSolicitud);
+        Listafamiliar.findById(userId, function (err, instance) {
+            
+        });
+
+
+        next();
+    });
+
 
 };
