@@ -59,6 +59,12 @@
       "principalId": "$authenticated",
       "permission": "ALLOW",
       "property": "usuarioRechazarSolicitud"
+    },
+    {
+      "accessType": "*",
+      "principalType": "ROLE",
+      "principalId": "$everyone",
+      "permission": "DENY"
     }
   ],
   "methods": {
